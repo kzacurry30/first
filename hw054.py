@@ -17,9 +17,7 @@ def input_error(func):
 
 
 def parse_input(user_input):
-    """
-    Parse user input into command and arguments.
-    """
+
     parts = user_input.strip().split()
     command = parts[0].lower() if parts else ''
     args = parts[1:] if len(parts) > 1 else []
@@ -41,24 +39,19 @@ def change_contact(contacts, name, phone):
     if name in contacts:
         contacts[name] = phone
         return "Contact updated."
-    else:
-        return "Error: contact not found."
+
 
 
 @input_error
 def show_phone(contacts, name):
-    if name in contacts:
-        return contacts[name]
-    else:
-        return "Error: contact not found."
+    return contacts(name)
 
 
 @input_error
 def show_all(contacts):
     if contacts:
         return "\n".join(f"{name}: {phone}" for name, phone in contacts.items())
-    else:
-        return "No contacts found."
+
 
 
 
