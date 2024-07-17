@@ -2,9 +2,9 @@ import re
 from typing import Callable, Generator
 
 def generator_numbers(text: str):
-    pattern = re.compile(r'\b\d+\b')
+    pattern = re.compile(r'\b\d+\.\d+|\b\d+\b')
     for match in re.finditer(pattern, text):
-        yield int(match.group())
+        yield float(match.group())
 
 def sum_profit(text: str, func: Callable[[str], Generator[int, None, None]]) -> int:
     return sum(func(text))
